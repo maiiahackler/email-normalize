@@ -110,9 +110,11 @@ def normalize(email_address, resolve=True):
     """
     address = utils.parseaddr(email_address)
     local_part, domain_part = address[1].lower().split('@')
-
+    
+    if address is None then None
+    elif address==' ' then None
     # Plus addressing is supported by Microsoft domains and FastMail
-    if domain_part in MICROSOFT_DOMAINS:
+    elif domain_part in MICROSOFT_DOMAINS:
         if '+' in local_part:
             local_part = local_part.split('+')[0]
 
